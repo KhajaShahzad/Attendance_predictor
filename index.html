@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="header">
+      <div class="badge">Attendance System</div>
+      <h1>Smart Attendance<br>Predictor</h1>
+      <p class="subtitle">Track · Predict · Stay Safe</p>
+    </div>
+
+    <div class="card">
+      <div class="input-group">
+        <div class="input-label">Total Classes Held</div>
+        <input type="number" id="held" placeholder="e.g. 80" min="1" />
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">Classes Attended</div>
+        <input type="number" id="attended" placeholder="e.g. 65" min="0" />
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          Required Attendance %
+          <button class="info-btn" onclick="toggleInfo()" aria-label="Info">i</button>
+        </div>
+        <input type="number" id="required" value="75" min="1" max="100" />
+        <div id="infoPopup" class="info-popup">
+          <strong>What is this?</strong><br>
+          75% is the default minimum set by most colleges.<br><br>
+          You can change it — for example, setting <strong>95%</strong> will calculate
+          bunks and recovery based on that stricter threshold.
+          <br>
+          <button class="close-info" onclick="toggleInfo()">✕ Close</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <button class="calc-btn" onclick="calculateAttendance()">Calculate →</button>
+
+      <div class="results" id="results">
+        <div class="divider"></div>
+        <div class="results-title">Analysis Report</div>
+
+        <div class="current-display" id="currentDisplay">
+          <div>
+            <div class="label">Current Attendance</div>
+            <div class="value" id="currentVal">—</div>
+          </div>
+          <div class="status-pill" id="statusPill">—</div>
+          <div class="bar-bg">
+            <div class="bar-fill" id="barFill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="sc-label">If Attend Next Class</div>
+            <div class="sc-value up" id="nextAttend">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-label">If Absent Next Class</div>
+            <div class="sc-value down" id="nextMiss">—</div>
+          </div>
+        </div>
+
+        <div class="verdict" id="verdict">—</div>
+      </div>
+    </div>
+
+    <div class="footer">built for students · stay above the line</div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
